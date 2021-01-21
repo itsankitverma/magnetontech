@@ -9,13 +9,13 @@ function Chart1() {
     org: [],
     view: [],
     dataLimit: [],
-    granularity:[],
-    tzName:[],
-    tzLoc:[],
-    SdataRange:[],
-    EdateRange:[],
-    XAxis:[],
-    YAxis:[],
+    granularity: [],
+    tzName: [],
+    tzLoc: [],
+    SdataRange: [],
+    EdateRange: [],
+    XAxis: [],
+    YAxis: [],
   });
 
   function set() {
@@ -29,7 +29,7 @@ function Chart1() {
     //     }
     //   })
     //   .then(result => console.log("result is : "+result))
-      
+
     setstate({
       id: Second._id,
       emailId: Second.emailId,
@@ -50,35 +50,37 @@ function Chart1() {
 
   return (
     <div className="table2">
-      
-      <Buttons onClick={() => {
+      <Buttons
+        onClick={() => {
           set();
-        }} />
+        }}
+      />
       <Chart
         width={"500px"}
         height={"300px"}
-        chartType="Table"
+        chartType="BarChart"
         loader={<div>Loading Chart</div>}
         data={[
-          [
-            { type: "string", label: "Details" },
-            { type: "number", label: "Value" },
-          ],
-          ["ID", { v: 10, f: state.id }],
-          ["Email ID", { v: 11, f: state.emailId }],
-          ["Organization", { v: 12, f: state.org }],
-          ["View", { v: 13, f: state.view }],
-          ["Granularity", { v: 13, f: state.granularity }],
-          ["Timezone Name", { v: 13, f: state.tzName }],
-          ["Timezone Location", { v: 13, f: state.tzLoc }],
-          ["Start dateRange", { v: 13, f: state.SdataRange }],
-          ["End dateRange", { v: 13, f: state.EdateRange }],
-          ["XAxis", { v: 13, f: state.XAxis }],
-          ["YAxis", { v: 13, f: state.YAxis }],
+          ["City", "2010 Population", "2000 Population"],
+          ["New York City, NY", 8175000, 8008000],
+          ["Los Angeles, CA", 3792000, 3694000],
+          ["Chicago, IL", 2695000, 2896000],
+          ["Houston, TX", 2099000, 1953000],
+          ["Philadelphia, PA", 1526000, 1517000],
         ]}
         options={{
-          showRowNumber: true,
+          title: "Population of Largest U.S. Cities",
+          chartArea: { width: "50%" },
+          hAxis: {
+            title: "Total Population",
+            minValue: 0,
+          },
+          vAxis: {
+            title: "City",
+          },
         }}
+        // For tests
+        rootProps={{ "data-testid": "1" }}
       />
     </div>
   );

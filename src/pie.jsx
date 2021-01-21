@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Chart } from "react-google-charts";
 import Second from "./json/Second.json";
-import Buttons from "./Buttons"
+import Buttons from "./Buttons";
 
 function Chart1() {
   const [state, setstate] = useState({
@@ -49,28 +49,48 @@ function Chart1() {
   // console.log("Result is : ",First);
 
   return (
-    <div style={{ marginLeft:50 }}>
-     <Buttons onClick={() => {
+    <div style={{ marginLeft: 50 }}>
+      <Buttons
+        onClick={() => {
           set();
-        }} />
-        <div>
-        <p><b>Identity : </b>{state.id}</p>
-        <p><b>Email ID : </b>{state.emailId}</p>
-        <p><b>Organization : </b>{state.org}</p>
-        <p><b>View : </b>{state.view}</p>
-        <p><b>Start Date Range : </b>{state.SdataRange}</p>
-        <p><b>End Date Range : </b>{state.SdataRange}</p>
-        </div>
+        }}
+      />
+      <div>
+        <p>
+          <b>Identity : </b>
+          {state.id}
+        </p>
+        <p>
+          <b>Email ID : </b>
+          {state.emailId}
+        </p>
+        <p>
+          <b>Organization : </b>
+          {state.org}
+        </p>
+        <p>
+          <b>View : </b>
+          {state.view}
+        </p>
+        <p>
+          <b>Start Date Range : </b>
+          {state.SdataRange}
+        </p>
+        <p>
+          <b>End Date Range : </b>
+          {state.SdataRange}
+        </p>
+      </div>
       <Chart
-        style={{ marginLeft:150, marginTop:-250 }}
+        style={{ marginLeft: 150, marginTop: -250 }}
         width={"500px"}
         height={"300px"}
         chartType="PieChart"
         loader={<div>Loading Chart</div>}
         data={[
           ["Date Range", "Granularity (in Hour)"],
-          ["Start Date Range", 1493424000000 ],
-          ["End Date Range", 1493596800000 ],
+          ["Start Date Range", 200],
+          ["End Date Range", state.SdataRange],
         ]}
         options={{
           legend: "none",
